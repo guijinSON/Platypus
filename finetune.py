@@ -17,7 +17,7 @@ from peft import (
     set_peft_model_state_dict
 )
 
-from transformers import LlamaForCausalLM, LlamaTokenizer
+from transformers import LlamaForCausalLM, LlamaTokenizer, AutoTokenizer
 
 from utils.prompter import Prompter
 
@@ -147,7 +147,7 @@ def train(
         torch_dtype=torch.float16,
         device_map=device_map)
 
-    tokenizer = LlamaTokenizer.from_pretrained(base_model)
+    tokenizer = AutoTokenizer.from_pretrained(base_model)
     
     bos = tokenizer.bos_token_id
     eos = tokenizer.eos_token_id
